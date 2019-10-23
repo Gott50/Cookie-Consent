@@ -124,9 +124,12 @@
     }
 
     function displayCookieConsent(form) {
+        var body = document.getElementsByTagName("body")[0];
         if (isCookieAccepted(form)) {
             cookieConsent.style = "display: none";
+            body.style = "";
         } else {
+            body.style = "overflow: hidden";
             cookieConsent.style = "display: block";
         }
     }
