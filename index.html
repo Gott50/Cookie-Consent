@@ -109,13 +109,18 @@
     var forms = document.getElementsByName("wf-form-Cookie-Form");
     for (var form of forms) {
         displayCookieConsent(form);
-        form.onsubmit = function (event) {
-            event.preventDefault();
-            for (var element of event.target.elements) {
-                setCookie(element.name, element.checked, 7);
-                displayCookieConsent(form);
-            }
-        };
+        if (isCookieAccepted(form)) {
+            var inputs = form.getElementsByTagName("input");
+            inputs[inputs.length - 1].click();
+        } else {
+            form.onsubmit = function (event) {
+                event.preventDefault();
+                for (var element of event.target.elements) {
+                    setCookie(element.name, element.checked, 7);
+                    displayCookieConsent(form);
+                }
+            };
+        }
     }
 
     function displayCookieConsent(form) {
