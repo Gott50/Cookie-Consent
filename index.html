@@ -110,6 +110,9 @@
     for (var form of forms) {
         displayCookieConsent(form);
         if (isCookieAccepted(form)) {
+            form.onsubmit = function (event) {
+                event.preventDefault();
+            };
             var inputs = form.getElementsByTagName("input");
             inputs[inputs.length - 1].click();
         } else {
