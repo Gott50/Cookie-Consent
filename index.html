@@ -37,8 +37,8 @@
         };
     };
 
-    function displayCookieConsent(form) {
-        if (isCookieAccepted(form)) {
+    function displayCookieConsent() {
+        if (isCookieAccepted()) {
             cookieConsent.style = "display: none";
             body.style = "";
             runCode();
